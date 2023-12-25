@@ -7,7 +7,7 @@ const app = express()
 const path=require('path');
 
 
-app.get('/uploads',(req,res)=>{
+app.get('/home',(req,res)=>{
         res.sendFile(path.join(__dirname ,"index.html"));
 })
 
@@ -18,9 +18,9 @@ function imageToDataUrl(imagePath) {
     return `data:image/${mimeType};base64,${base64Image}`;
   }
 
-app.get('/home',(req,res)=>{
+app.get('/gallery',(req,res)=>{
 
-    const folderPath = '/home/root-haier/pramod/home_server/uploads';
+    const folderPath = './uploads';
 
     fs.readdir(folderPath, (err, files) => {
         if (err) {
@@ -32,7 +32,6 @@ app.get('/home',(req,res)=>{
             const imageUrl = imageToDataUrl(path.join(folderPath, file));
             return `<img src="${imageUrl}" alt="${file}" class="gallery-image">`;
           }).join('');
-          console.log(typeof(imagesHtml))
           const htmlResponse = `
             <!DOCTYPE html>
             <html lang="en">
