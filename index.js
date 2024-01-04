@@ -1,12 +1,13 @@
 const express = require('express')
 const multer  = require('multer')
+const cors=require('cors')
 const upload = multer({ dest: 'uploads/' })
 const fs=require('fs')
 const app = express()
 
 const path=require('path');
 
-
+app.use(cors());
 app.get('/home',(req,res)=>{
         res.sendFile(path.join(__dirname ,"index.html"));
 })
@@ -17,6 +18,21 @@ function imageToDataUrl(imagePath) {
     const mimeType = path.extname(imagePath).replace('.', '');
     return `data:image/${mimeType};base64,${base64Image}`;
   }
+
+app.get('/images',(req,res)=>{
+  // fs.readdir('/Users/prajwalahetti/pramod/project/home_server/uploads',(err,files)=>{
+  //   files.forEach((file)=>{
+  //        fs.readFile(`/Users/prajwalahetti/pramod/project/home_server/uploads/${file}`,'utf8',(err,data)=>{
+  //         console.log(data)
+  //        })
+  //   })
+  // })
+  fs.readFile(`/Users/prajwalahetti/pramod/project/home_server/uploads/1d8d1103d7d72164f1136f1d84793d9b`,(err,data)=>{
+    const buffer=data.toString('base64');
+    res.send({img:buffer});
+    console.log(buffer)
+   })
+})
 
 app.get('/gallery',(req,res)=>{
 
