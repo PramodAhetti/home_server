@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import Nav from './components/nav'
 import Gallery from './components/gallery';
+import Upload from './components/upload';
 function App() {
   const [nav,setnav]=useState(false)
   const navinverse=()=>{
@@ -21,7 +22,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/upload" element={<Contact />} />
+          <Route path="/upload" element={<Upload />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,9 +1,11 @@
 const express = require('express')
 const multer  = require('multer')
 const cors=require('cors')
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ dest: 'uploads/' ,filename:'pramod'})
 const fs=require('fs')
 const app = express()
+
+
 
 const path=require('path');
 
@@ -18,7 +20,6 @@ function imageToDataUrl(imagePath) {
     const mimeType = path.extname(imagePath).replace('.', '');
     return `data:image/${mimeType};base64,${base64Image}`;
   }
-
 app.get('/images',(req,res)=>{
   // fs.readdir('/Users/prajwalahetti/pramod/project/home_server/uploads',(err,files)=>{
   //   files.forEach((file)=>{
@@ -30,7 +31,6 @@ app.get('/images',(req,res)=>{
   fs.readFile(`/Users/prajwalahetti/pramod/project/home_server/uploads/1d8d1103d7d72164f1136f1d84793d9b`,(err,data)=>{
     const buffer=data.toString('base64');
     res.send({img:buffer});
-    console.log(buffer)
    })
 })
 
@@ -93,8 +93,6 @@ app.get('/gallery',(req,res)=>{
 app.post('/upload', upload.array('image'), function (req, res, next) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
-  console.log(req.file);  
-
   res.send("saved image")
 })
 

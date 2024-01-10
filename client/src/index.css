@@ -52,6 +52,13 @@ body {
   justify-content: space-evenly;
   z-index: 1;
 }
+/* The animation code */
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
 
 .homeBox{
   grid-column: 3/29;
@@ -62,6 +69,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation-name:example ;
+  animation-duration:4s;
 }
 
 
