@@ -28,10 +28,22 @@ app.get('/images',(req,res)=>{
   //        })
   //   })
   // })
-  fs.readFile(`/Users/prajwalahetti/pramod/project/home_server/uploads/1d8d1103d7d72164f1136f1d84793d9b`,(err,data)=>{
-    const buffer=data.toString('base64');
-    res.send({img:buffer});
+    fs.readdir(`C:/Users/prajw/Desktop/Pramod/project/home_server/uploads`,(err,data)=>{
+     const item=req.query.index;
+     if(item<data.length){
+        fs.readFile(`./uploads/${data[item]}`,(err,data)=>{
+          const buffer=data.toString('base64');
+          res.send({img:buffer});
+        })
+     }else{
+      res.sendStatus(500);
+     }
+
    })
+  // fs.readFile(`C:/Users/prajw/Desktop/Pramod/project/home_server/uploads/ca59954f0fe595272092c6beeab5c1af`,(err,data)=>{
+  //   const buffer=data.toString('base64');
+  //   res.send({img:buffer});
+  //  })
 })
 
 app.get('/gallery',(req,res)=>{

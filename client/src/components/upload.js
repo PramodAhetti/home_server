@@ -20,7 +20,7 @@ const FileUpload = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('/upload', formData);
+      const response = await axios.post('http://localhost:9000/upload', formData);
       console.log(response.data); // Log the response from the server
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -28,8 +28,8 @@ const FileUpload = () => {
   };
 
   return (
-    <form action="http://localhost:9000/upload" method="post" encType="multipart/form-data">
-      <h2>Home Server</h2>
+    <form action="http://localhost:9000/upload" method="post" className="uploadbox debug" encType="multipart/form-data">
+      <h2>Upload</h2>
       {/* Input field for file selection */}
       <label htmlFor="file" className="file-input-label">
         Choose a file
@@ -38,7 +38,7 @@ const FileUpload = () => {
       <br />
 
 
-      <button type="submit" >
+      <button onClick={handleUpload} >
         Upload File
       </button>
 

@@ -44,7 +44,7 @@ body {
 .navbar{
   position: relative;
   grid-column: 12/30;
-  grid-row: 1/30;
+  grid-row: 1/31;
   display: flex;
   font-size: 8vw;
   text-align: center;
@@ -63,7 +63,7 @@ body {
 .homeBox{
   grid-column: 3/29;
   grid-row: 8/22;
-  font-size: 15vw;
+  font-size: 20vw;
   text-align: center; 
   font-weight: bold;
   display: flex;
@@ -77,11 +77,20 @@ body {
 .aboutbar{
   grid-row:2/30;
   padding: 3vw;
-
-  font-size: 4vw;
+  height: fit-content;
+  font-size: 8vw;
   grid-column: 3/29;
 }
+.uploadbox{
+  text-align: center;
+  grid-row: 10/21;
+  grid-column: 6/26;
+  padding: 4vw;
+  font-size: 8vw;
+}
 .gallerybox{
+  text-align: center;
+  font-size: 8vw;
   margin:2vw;
   grid-row:5/31;
   height: fit-content;

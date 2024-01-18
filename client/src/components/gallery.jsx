@@ -3,31 +3,35 @@ import axios from 'axios';
 
 export default function Gallery() {
   const [images,setimages] = useState([]);
+  let index=images.length;
   const getimages=async () => {
-    try {
-      const response = await axios.get('http://localhost:9000/images');
-      setimages([...images,response.data.img])
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
+       if(index!=null){
+        try {
+          console.log(index)
+          const response = await axios.get(`http://localhost:9000/images?index=${index}`);
+          setimages([...images,response.data.img])
+          index++;
+          
+        } catch (error) {
+          index=null;
+          console.error('Error fetching images');
+        }
+       }else{
+        console.log("No further images")
+       }
   };
   
   const gallerybox = document.querySelector('.gallerybox');
 
 
-  // window.addEventListener('scrollend',()=>{
-  //   let imgbutton=document.getElementById('imgbtn');
-  //   if(imgbutton.checkVisibility()){
-  //     getimages();
-  //   }
-  // })
+ 
 
 
 
 
   return (
     <div className='gallerybox'>
-      <h1>Gallery</h1>
+      <h1>Gallery</h1> 
       {images.map((data, index) => {
         return (
         
