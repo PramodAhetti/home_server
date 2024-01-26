@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import backendurl from './backend';
 import axios from 'axios';
 
 export default function Gallery() {
@@ -8,7 +9,7 @@ export default function Gallery() {
        if(index!=null){
         try {
           console.log(index)
-          const response = await axios.get(`http://localhost:9000/images?index=${index}`);
+          const response = await axios.get(`${backendurl}/images?index=${index}`);
           setimages([...images,response.data.img])
           index++;
           

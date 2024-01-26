@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import backend_url from './backend';
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -20,7 +21,7 @@ const FileUpload = () => {
     formData.append('image', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:9000/upload', formData);
+      const response = await axios.post(`${backend_url}/upload`, formData);
       console.log(response.data); // Log the response from the server
     } catch (error) {
       console.error('Error uploading file:', error);
@@ -28,7 +29,7 @@ const FileUpload = () => {
   };
 
   return (
-    <form action="http://localhost:9000/upload" method="post" className="uploadbox debug" encType="multipart/form-data">
+    <form action={backend_url+'/upload'} method="post" className="uploadbox debug" encType="multipart/form-data">
       <h2>Upload</h2>
       {/* Input field for file selection */}
       <label htmlFor="file" className="file-input-label">

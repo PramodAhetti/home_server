@@ -21,7 +21,10 @@ body {
   grid-template-columns: repeat(30,1fr);
   grid-template-rows: repeat(30,1fr);
 }
-
+.contactbox{
+  grid-column: 3/29;
+  grid-row: 8/22;
+}
 .debug{
   border: solid white ; 
   color: white;
